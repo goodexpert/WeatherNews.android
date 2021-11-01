@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("kotlin-android")
+    id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -61,9 +63,18 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.0")
     implementation("androidx.activity:activity-compose:1.4.0")
 
+    val hilt_version = "2.39.1"
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0-alpha03")
+    implementation("com.google.dagger:hilt-android:$hilt_version")
+    kapt("com.google.dagger:hilt-android-compiler:$hilt_version")
+
     testImplementation("junit:junit:4.+")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:$compose_version")
     debugImplementation("androidx.compose.ui:ui-tooling:$compose_version")
+
+    androidTestImplementation("androidx.hilt:hilt-navigation-compose:1.0.0-alpha03")
+    androidTestImplementation("com.google.dagger:hilt-android-testing:$hilt_version")
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:$hilt_version")
 }

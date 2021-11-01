@@ -8,11 +8,15 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import com.github.zsoltk.compose.backpress.BackPressHandler
 import dagger.hilt.android.AndroidEntryPoint
 import org.goodexpert.apps.weathernews.ui.theme.WeatherNewsTheme
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    @Inject lateinit var backPressHandler: BackPressHandler
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -22,6 +26,12 @@ class MainActivity : ComponentActivity() {
                     Greeting("Android")
                 }
             }
+        }
+    }
+
+    override fun onBackPressed() {
+        if (!backPressHandler.handle()) {
+            super.onBackPressed()
         }
     }
 }

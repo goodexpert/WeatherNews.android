@@ -62,6 +62,7 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview:$compose_version")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.0")
     implementation("androidx.activity:activity-compose:1.4.0")
+    implementation("com.github.zsoltk:compose-router:0.28.0")
 
     val hilt_version = "2.39.1"
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0-alpha03")

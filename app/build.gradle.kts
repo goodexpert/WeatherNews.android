@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("kotlin-android")
     id("kotlin-kapt")
+    id("kotlinx-serialization")
     id("dagger.hilt.android.plugin")
 }
 
@@ -69,6 +70,12 @@ dependencies {
     implementation("com.google.dagger:hilt-android:$hilt_version")
     kapt("com.google.dagger:hilt-android-compiler:$hilt_version")
 
+    val ktor_version = "1.5.0"
+    implementation("io.ktor:ktor-client-android:$ktor_version")
+    implementation("io.ktor:ktor-client-serialization:$ktor_version")
+    implementation("io.ktor:ktor-client-logging-jvm:$ktor_version")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.1")
+
     testImplementation("junit:junit:4.+")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
@@ -78,4 +85,6 @@ dependencies {
     androidTestImplementation("androidx.hilt:hilt-navigation-compose:1.0.0-alpha03")
     androidTestImplementation("com.google.dagger:hilt-android-testing:$hilt_version")
     kaptAndroidTest("com.google.dagger:hilt-android-compiler:$hilt_version")
+
+    androidTestImplementation("io.ktor:ktor-client-mock:$ktor_version")
 }
